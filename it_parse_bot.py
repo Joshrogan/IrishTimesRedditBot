@@ -29,7 +29,7 @@ def post_article(html, reddit, submission, browser):
     try:
         submission.reply(article_text)
     except Exception as e:
-        print("oopsie")
+        print(e)
 
 def login_reddit():
     reddit = praw.Reddit(client_id = os.environ.get('REDDIT_CLIENT_ID'), 
