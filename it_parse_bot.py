@@ -1,4 +1,4 @@
-import praw, os, bs4, requests, time
+import praw, os, requests, time
 from selenium import webdriver
 from bs4 import BeautifulSoup
 
@@ -26,13 +26,18 @@ def post_article(html, reddit, submission, browser):
     for p in article_para:
         article_text += ('>' + p.get_text() + '\n\n')
 
-    submission.reply(article_text)
+    try:
+        submission.reply(article_text)
+    except Exception as e:
+        print("oopsie")
 
 def login_reddit():
-    reddit = praw.Reddit(client_id = 'Ao4phq9377Rggg',
-            client_secret = 'vfOop1WqPPz8nasr2HqstUXXa6E',
-            username='coipeail', password='focalfaire',
-            user_agent='itRepostBotAlpha')
+    reddit = praw.Reddit(client_id = os.environ.get('REDDIT_CLIENT_ID'), 
+            client_secret = os.environ.get('REDDIT_CLIENT_SECRET'), 
+            username = os.environ.get('REDDIT_USERNAME'),
+            password = os.environ.get('REDDIT_PASSWORD'),
+            user_agent = os.environ.get('REDDIT_USER_AGENT')
+    )
     return reddit
 
 def login_irishtimes():
