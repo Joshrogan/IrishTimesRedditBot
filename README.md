@@ -1,5 +1,5 @@
 # IrishTimesRedditBot
-Reddit Bot that parses the Irisih times site for any articles posted to a subreddit
+Reddit Bot that parses the Irish times site for any articles posted to a subreddit
 and posts the article text in the comments underneath the original reddit submission
 
 #### Technology Stack
